@@ -1,5 +1,3 @@
-//metadoc copyright Your Name Here 2008
-
 #ifndef IoSVNtxn_DEFINED
 #define IoSVNtxn_DEFINED 1
 

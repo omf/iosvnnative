@@ -1,10 +1,3 @@
-//metadoc SVNfs copyright Your Name Here
-//metadoc SVNfs license BSD revised
-//metadoc SVNfs category Example
-/*metadoc SVNfs description
-Describe your addon here.
-*/
-
 #include "svn_fs.h"
 
 #include "aprhash_iomap.h"

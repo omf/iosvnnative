@@ -1,5 +1,3 @@
-//metadoc copyright Your Name Here 2008
-
 #ifndef IOSVNfs_DEFINED
 #define IOSVNfs_DEFINED 1
 

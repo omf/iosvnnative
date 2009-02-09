@@ -1,18 +1,10 @@
-//metadoc SVNtxn copyright Your Name Here
-//metadoc SVNtxn license BSD revised
-//metadoc SVNtxn category Example
-/*metadoc SVNtxn description
-Describe your addon here.
-*/
-
-#include "svn_fs.h"
-#include "svn_repos.h"
-
 #include "IoState.h"
 #include "IoNumber.h"
 #include "IoMap.h"
 #include "IoSVNtxn.h"
 #include "SVN.h"
+#include "svn_fs.h"
+#include "svn_repos.h"
 
 #define DATA(self) ((IoSVNtxnData *)IoObject_dataPointer(self))
 

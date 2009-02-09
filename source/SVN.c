@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include "SVN.h"
-
 #include "apr_general.h"
 #include "apr_pools.h"
 #include "svn_types.h"
 #include "svn_pools.h"
-
 
 typedef struct 
 {

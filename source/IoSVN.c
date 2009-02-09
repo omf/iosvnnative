@@ -1,11 +1,3 @@
-
-//metadoc SVN copyright Your Name Here
-//metadoc SVN license BSD revised
-//metadoc SVN category Example
-/*metadoc SVN description
-Describe your addon here.
-*/
-
 #include "IoState.h"
 #include "IoSVN.h"
 #include "SVN.h"

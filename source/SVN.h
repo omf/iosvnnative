@@ -1,5 +1,3 @@
-//metadoc copyright Your Name Here 2008
-
 #ifndef SVN_H
 #define SVN_H 1
 

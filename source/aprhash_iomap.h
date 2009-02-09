@@ -1,5 +1,3 @@
-//metadoc copyright Your Name Here 2008
-
 #ifndef aprhash_iomap_DEFINED
 #define aprhash_iomap_DEFINED 1
 

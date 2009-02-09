@@ -1,5 +1,3 @@
-//metadoc copyright Your Name Here 2008
-
 #ifndef IOSVNrepos_DEFINED
 #define IOSVNrepos_DEFINED 1
 

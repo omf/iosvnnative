@@ -1,18 +1,10 @@
-//metadoc SVNrepos copyright Your Name Here
-//metadoc SVNrepos license BSD revised
-//metadoc SVNrepos category Example
-/*metadoc SVNrepos description
-Describe your addon here.
-*/
-
-#include "svn_repos.h"
-#include "svn_fs.h"
-
 #include "IoState.h"
 #include "IoNumber.h"
 #include "IoSVNrepos.h"
 #include "IoSVNfs.h"
 #include "SVN.h"
+#include "svn_repos.h"
+#include "svn_fs.h"
 
 #define DATA(self) ((IoSVNreposData *)IoObject_dataPointer(self))
 
