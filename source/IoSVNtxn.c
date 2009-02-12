@@ -25,46 +25,46 @@ IoObject *IoSVNtxn_proto(void *state)
 {
     printf("IoSVNtxn_proto\n");
 
-	IoSVNtxnObject *self = IoObject_new(state);
-	IoObject_tag_(self, IoSVNtxn_newTag(state));
-	IoState_registerProtoWithFunc_(state, self, IoSVNtxn_proto);
-	{
-		IoMethodTable methodTable[] = {
-        {"printHandle", IoSVNtxn_printHandle},
-        {"propList", IoSVNtxn_propList},
-        {"changeProp", IoSVNtxn_changeProp},
-		{NULL, NULL},
-		};
-		IoObject_addMethodTable_(self, methodTable);
-	}
+    IoSVNtxnObject *self = IoObject_new(state);
+    IoObject_tag_(self, IoSVNtxn_newTag(state));
+    IoState_registerProtoWithFunc_(state, self, IoSVNtxn_proto);
+    {
+        IoMethodTable methodTable[] = {
+            {"printHandle", IoSVNtxn_printHandle},
+            {"propList", IoSVNtxn_propList},
+            {"changeProp", IoSVNtxn_changeProp},
+            {NULL, NULL},
+        };
+        IoObject_addMethodTable_(self, methodTable);
+    }
 
-	return self;
+    return self;
 }
 
 IoObject *IoSVNtxn_rawClone(IoSVNtxnObject *proto)
 {
     printf("IoSVNtxn_rawClone\n");
 
-	IoObject *self = IoObject_rawClonePrimitive(proto);
-	// This is where any object-specific data would be copied
+    IoObject *self = IoObject_rawClonePrimitive(proto);
+    // This is where any object-specific data would be copied
     IoObject_setDataPointer_(self, calloc(1, sizeof(IoSVNtxnData)));
     DATA(self)->handle = NULL;
-    DATA(self)->handle = SVN_createSubpool();
+    DATA(self)->pool = SVN_createSubpool();
     printf("IoSVNtxn_proto->calloc(%p)\n", DATA(self));
-	return self;
+    return self;
 
     //PARA QUE SIEMPRE SEA EL MISMO PROTO
-	//return IoState_protoWithInitFunction_(IOSTATE, IoSVNtxn_proto);
+    //return IoState_protoWithInitFunction_(IOSTATE, IoSVNtxn_proto);
 }
 
 IoObject *IoSVNtxn_new(void *state)
 {
     printf("IoSVNtxn_new\n");
-	IoObject* proto = IoState_protoWithInitFunction_(state, IoSVNtxn_proto);
+    IoObject* proto = IoState_protoWithInitFunction_(state, IoSVNtxn_proto);
     return IOCLONE(proto);
 
     //PARA QUE SIEMPRE SEA EL MISMO PROTO
-	//return IoState_protoWithInitFunction_(state, IoSVNtxn_proto);
+    //return IoState_protoWithInitFunction_(state, IoSVNtxn_proto);
 }
 
 IoObject *IoSVNtxn_mark(IoSVNtxnObject* self)
@@ -75,7 +75,7 @@ IoObject *IoSVNtxn_mark(IoSVNtxnObject* self)
 
 void IoSVNtxn_free(IoSVNtxnObject *self)
 {
-	// free dynamically allocated data and do any cleanup
+    // free dynamically allocated data and do any cleanup
     printf("IoSVNtxn_free\n");
 
     if(DATA(self)) {
@@ -98,7 +98,8 @@ IoObject *IoSVNtxn_newWithHandle_(void *state, svn_fs_txn_t* handle)
 
 IoObject *IoSVNtxn_newWithHandle_pool_(void *state, svn_fs_txn_t* handle, apr_pool_t* pool)
 {
-    IoSVNtxnObject* new = IoSVNtxn_newWithHandle_(state, handle);
+    IoSVNtxnObject* new;
+    new = IoSVNtxn_newWithHandle_(state, handle);
     SVN_destroySubpool(DATA(new)->pool);
     DATA(new)->pool = pool;
     printf("IoSVNtxn_newWithHandle_pool_ new %p, pool %p\n", new, pool);

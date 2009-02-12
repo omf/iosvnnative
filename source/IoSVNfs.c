@@ -33,7 +33,7 @@ IoObject *IoSVNfs_proto(void *state)
         //Opening and creating filesystems
         {"open", IoSVNfs_open},
         {"close", IoSVNfs_close},
-        {"type", IoSVNfs_type},
+        {"type_", IoSVNfs_type},
         //Filesystem revisions
         {"youngestRev", IoSVNfs_youngestRev},
         {"revisionProp", IoSVNfs_revisionProp},
@@ -320,7 +320,7 @@ IoObject *IoSVNfs_openTxn(IoSVNfsObject *self, IoObject *locals, IoMessage *m)
         }
         else {
             printf("%s\n", err->message);
-            SVN_destroySubpool(pool);
+            //SVN_destroySubpool(pool);
         }
     }
 
